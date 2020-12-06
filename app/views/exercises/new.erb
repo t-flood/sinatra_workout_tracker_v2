@@ -1,0 +1,11 @@
+<h1>Create workout</h1>
+<p> Input your exercises information. <p>
+<form method="POST" action="/exercises">
+  <label> Exercise:</label> <input type="text" name="exercise[name]">
+  <label> Sets: </label><input type="integer" name="exercise[sets]">
+  <label> Reps: </label><input type="integer" name="exercise[reps]">
+  <label> Weight: </label><input type="integer" name="exercise[weight]">
+  <label> Notes: </label><input type="text" name="exercise[notes]">
+  <label> Date: </label><input type="date" name="exercise[date]" value= <%=Time.now %>>
+  <input type="submit" value="Create">
+</form>

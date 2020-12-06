@@ -9,20 +9,41 @@ erb :'exercises/new
 
 POST /exercises
 exercise = Exercise.create(params)
+redirect to
 
 # Read
 
-GET /exercises & GET /movies/:id
+GET /exercises & GET /movies/:date
 
 GET /exercises
 @exercises = Exercises.all
 erb :'/exercises/index'
 
 GET /exercises/:date
+@exercise = Exercise.find(params[:date])
+erb:'/exercises/show'
 
 # Update
 
+GET /exercises/:date/edit & PUT/PATCH /exercises/:date/edit
+
+GET /exercises/:date/edit
+@movies = Movie.find(params[:date])
+erb :'/exercises/edit'
+
+PUT/PATCH /exercises/:date
+exercise = Exercise.find(params[:date])
+
+movie.update(params)
+
+redirect to
+
 # Delete
+
+DELETE /exercises/:date
+exercise = Exercise.find(params:date)
+Exercise.destroy(exercise)
+redirect to
 
 | Verb | Route | View |
 | GET | /exercises | index | #get all exercises

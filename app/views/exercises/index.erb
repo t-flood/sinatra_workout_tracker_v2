@@ -1,0 +1,4 @@
+<h1>My Workouts</h1>
+  <ul><% @exercises.each do |e|%>
+  <li><strong><%= e.name %></strong> <i> on <%= e.date %>:</i> <%= e.sets %> x <%= e.reps %> @ <%= e.weight %>lbs <%= e.notes %> </li>
+  <% end %></ul>
