@@ -13,13 +13,13 @@ class ExercisesController < ApplicationController
   post '/exercises' do
     redirect_if_not_logged_in
     @exercise = Exercise.create(params[:exercise])
-    redirect "/exercises"
+    redirect "/exercises/#{@exercise.date}"
   end
 
   get '/exercises/:date' do
     redirect_if_not_logged_in
-    #show
-    #show exercises for a date
+    @workout = Exercise.where("date = ?", params[:date])
+    erb :'exercises/show'
   end
 
   get '/exercises/:date/edit' do
