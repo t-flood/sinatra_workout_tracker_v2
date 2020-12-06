@@ -24,7 +24,7 @@ class ExercisesController < ApplicationController
 
   get '/exercises/:date/edit' do
     redirect_if_not_logged_in
-    #get edit form for a date
+    @workout = Exercise.where("date = ?", params[:date])
     erb :'exercises/edit'
   end
 

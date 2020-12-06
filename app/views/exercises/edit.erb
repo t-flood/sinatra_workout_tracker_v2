@@ -1,0 +1,16 @@
+<h1>Edit workout on <%=@workout.first.date %></h1>
+<p> Edit your exercises information. <p>
+<ul><% @workout.each do |e|%>
+<form method="POST" action="/exercises/<%=@workout.first.date%>">
+  <label> Exercise:</label> <input type="text" name="exercise[name]" value= "<%=e.name%>">
+  <label> Sets: </label><input type="integer" name="exercise[sets]" value= "<%=e.sets%>">
+  <label> Reps: </label><input type="integer" name="exercise[reps]" value= "<%=e.reps%>">
+  <label> Weight: </label><input type="integer" name="exercise[weight]" value= "<%=e.weight %>">
+  <label> Notes: </label><input type="text" name="exercise[notes]" value= "<%=e.notes %>">
+  <label> Date: </label><input type="date" name="exercise[date]" value= "<%=e.date %>">
+  <input type="submit" value="Edit">
+  <% end %>
+
+</form>
+
+<a href="/exercises">Home</a>

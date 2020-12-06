@@ -2,3 +2,5 @@
   <ul><% @workout.each do |e|%>
   <li><strong><%= e.name %>:</strong><%= e.sets %> x <%= e.reps %> @ <%= e.weight %>lbs <%= e.notes %> </li>
   <% end %></ul>
+
+<a href="/exercises/new">Add another exercise</a>
