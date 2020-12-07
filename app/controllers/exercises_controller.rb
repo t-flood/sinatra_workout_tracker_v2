@@ -22,11 +22,16 @@ class ExercisesController < ApplicationController
     erb :'exercises/show'
   end
 
-  get '/exercises/:date/edit' do
+  get '/exercises/:id/edit' do
     redirect_if_not_logged_in
-    @workout = Exercise.where("date = ?", params[:date])
+    @exercise = Exercise.find_by_id(params[:id])
     erb :'exercises/edit'
   end
 
+  patch '/exercises/:id' do
+    exercise = Exercise.find_by(params[:id])
+    exercise.update(params[:exercise])
+    redirect "/exercises/#{exercise.date}"
+  end
 
 end
