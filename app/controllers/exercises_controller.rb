@@ -27,14 +27,8 @@ class ExercisesController < ApplicationController
 
   get '/exercises/:id/edit' do
     redirect_if_not_logged_in
-    if current_user == @exercise.current_user
-      @exercise = Exercise.find_by_id(params[:id])
+    @exercise = current_user.exercises.find_by_id(params[:id])
       erb :'exercises/edit'
-    else
-      flash[:message] = "You don't have access to that exercise"
-      redirect "/exercises"
-    end
-
   end
 
   patch '/exercises/:id' do
