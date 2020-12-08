@@ -1,7 +1,8 @@
 class ExercisesController < ApplicationController
 
   get '/exercises' do
-    @exercises = Exercise.all
+    redirect_if_not_logged_in
+    @exercises = current_user.exercises
     erb :'exercises/index'
   end
 
@@ -12,26 +13,39 @@ class ExercisesController < ApplicationController
 
   post '/exercises' do
     redirect_if_not_logged_in
-    @exercise = Exercise.create(params[:exercise])
+    @exercise = Exercise.new(params[:exercise])
+    @exercise.user = current_user
+    @exercise.save
     redirect "/exercises/#{@exercise.date}"
   end
 
   get '/exercises/:date' do
     redirect_if_not_logged_in
-    @workout = Exercise.where("date = ?", params[:date])
+    @workout = current_user.exercises.where(date: params[:date])
     erb :'exercises/show'
   end
 
   get '/exercises/:id/edit' do
     redirect_if_not_logged_in
-    @exercise = Exercise.find_by_id(params[:id])
-    erb :'exercises/edit'
+    if current_user == @exercise.current_user
+      @exercise = Exercise.find_by_id(params[:id])
+      erb :'exercises/edit'
+    else
+      flash[:message] = "You don't have access to that exercise"
+      redirect "/exercises"
+    end
+
   end
 
   patch '/exercises/:id' do
+    redirect_if_not_logged_in
     exercise = Exercise.find_by(params[:id])
-    exercise.update(params[:exercise])
-    redirect "/exercises/#{exercise.date}"
+    if current_user == exercise.current_user
+      exercise.update(params[:exercise])
+      redirect "/exercises/#{exercise.date}"
+    else
+      flash[:message] = "You don't have access to that exercise"
+      redirect "/exercises"
+    end
   end
-
 end

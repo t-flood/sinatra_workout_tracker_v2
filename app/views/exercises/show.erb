@@ -1,6 +1,7 @@
-<h1> Workout on <%= @workout.first.date %></h1>
+<!-- hide if it doesn't belong to us -->
+<h1> Workout</h1>
   <ul><% @workout.each do |e|%>
-  <li><strong><%= e.name %>:</strong><%= e.sets %> x <%= e.reps %> @ <%= e.weight %>lbs <%= e.notes %> <a href="/exercises/<%= e.id %>/edit">Edit</a></li>
+  <li><strong><%= e.name %>:</strong> <%= e.sets %> x <%= e.reps %> @ <%= e.weight %>lbs <%= e.notes %> <a href="/exercises/<%= e.id %>/edit">Edit</a></li>
   <% end %></ul>
 
 <a href="/exercises/new">Add another exercise</a> <br>
