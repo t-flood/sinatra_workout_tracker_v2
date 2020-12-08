@@ -33,13 +33,8 @@ class ExercisesController < ApplicationController
 
   patch '/exercises/:id' do
     redirect_if_not_logged_in
-    exercise = Exercise.find_by(params[:id])
-    if current_user == exercise.current_user
-      exercise.update(params[:exercise])
-      redirect "/exercises/#{exercise.date}"
-    else
-      flash[:message] = "You don't have access to that exercise"
-      redirect "/exercises"
-    end
+    exercise = current_user.exercises.find_by_id(params[:id])
+    exercise.update(params[:exercise])
+    redirect "/exercises/#{exercise.date}"
   end
 end
