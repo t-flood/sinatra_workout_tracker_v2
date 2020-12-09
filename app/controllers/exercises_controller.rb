@@ -14,9 +14,13 @@ class ExercisesController < ApplicationController
   post '/exercises' do
     redirect_if_not_logged_in
     @exercise = Exercise.new(params[:exercise])
-    @exercise.user = current_user
-    @exercise.save
-    redirect "/exercises/#{@exercise.date}"
+    if @exercise.valid? == true
+        @exercise.user = current_user
+        @exercise.save
+      redirect "/exercises/#{@exercise.date}"
+    else
+      redirect "/exercises/new?error=invalid"
+    end
   end
 
   get '/exercises/:date' do
@@ -34,7 +38,11 @@ class ExercisesController < ApplicationController
   patch '/exercises/:id' do
     redirect_if_not_logged_in
     exercise = current_user.exercises.find_by_id(params[:id])
-    exercise.update(params[:exercise])
-    redirect "/exercises/#{exercise.date}"
+    if exercise.valid? == true
+      exercise.update(params[:exercise])
+      redirect "/exercises/#{exercise.date}"
+    else
+      redirect "/exercises?error=invalid"
+    end
   end
 end
