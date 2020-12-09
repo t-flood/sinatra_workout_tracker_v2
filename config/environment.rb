@@ -2,7 +2,8 @@ require 'bundler'
 
 Bundler.require
 
-ActiveRecord::Base.establish_connection(:development)
-
+env = ENV.fetch("RACK_ENV", "development")
+ActiveRecord::Base.establish_connection(env)
 ActiveRecord::Base.logger = Logger.new(STDOUT)
+
 require_all 'app'
