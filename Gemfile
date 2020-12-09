@@ -4,9 +4,7 @@ source "https://rubygems.org"
 
 git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }
 
-# gem "rails"
 gem 'sinatra'
-#gem 'sqlite3', '~>1.3.6'
 gem 'activerecord', require: 'active_record'
 gem 'rake'
 gem 'pry'
@@ -14,5 +12,5 @@ gem 'sinatra-activerecord'
 gem 'require_all'
 gem 'shotgun'
 gem 'bcrypt'
-gem 'sqlite3', group: [:development, :test]
-gem 'pg', group: :production
+gem 'pg'
+gem 'sqlite3', group: :development
