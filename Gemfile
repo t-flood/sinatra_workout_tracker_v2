@@ -14,5 +14,5 @@ gem 'sinatra-activerecord'
 gem 'require_all'
 gem 'shotgun'
 gem 'bcrypt'
-gem "pg", group: [:development, :production]
-gem "sqlite3", group: :development
+gem 'sqlite3', group: [:development, :test]
+gem 'pg', group: :production
