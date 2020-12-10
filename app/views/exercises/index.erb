@@ -1,7 +1,3 @@
-<!-- hide if it doesn't belong to us -->
-
-
-
 <h1>My Workouts</h1>
   <ul><% @exercises.each do |e|%>
   <li><strong><%= e.name %></strong> <i> on <a href="/exercises/<%=e.date%>"> <%=e.date%></a> :</i> <%= e.sets %> x <%= e.reps %> @ <%= e.weight %>lbs <%= e.notes %></li>

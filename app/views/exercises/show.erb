@@ -1,4 +1,3 @@
-<!-- hide if it doesn't belong to us -->
 <h1> Workout on <%=@workout.first.date %></h1>
   <ul><% @workout.each do |e|%>
   <li><strong><%= e.name %>:</strong> <%= e.sets %> x <%= e.reps %> @ <%= e.weight %>lbs <%= e.notes %>
