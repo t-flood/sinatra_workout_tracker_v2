@@ -12,8 +12,9 @@
   <label> Notes: </label><input type="text" name="exercise[notes]" value= "<%=@exercise.notes %>">
   <label> Date: </label><input type="date" name="exercise[date]" value= "<%=@exercise.date %>">
   <input type="submit" value="Edit">
+  <input type="hidden" name="_method" value="DELETE">
+  <input type="submit" value="Delete"></li>
   <br>
-
 </form>
 
 <a href="/exercises">Home</a>

@@ -45,4 +45,10 @@ class ExercisesController < ApplicationController
       redirect "/exercises?error=invalid"
     end
   end
+
+  delete '/exercises/:id' do
+    exercise = current_user.exercises.find_by_id(params[:id])
+    exercise.destroy
+    redirect to "/exercises/#{exercise.date}"
+  end
 end
