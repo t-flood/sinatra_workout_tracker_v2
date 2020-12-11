@@ -9,7 +9,7 @@
   <label> Weight: </label><input type="integer" name="exercise[weight]" value= "<%=@exercise.weight %>">
   <label> Notes: </label><input type="text" name="exercise[notes]" value= "<%=@exercise.notes %>">
   <label> Date: </label><input type="date" name="exercise[date]" value= "<%=@exercise.date %>">
-  <input type="submit" value="Edit">
+  <input type="submit" value="Save">
   </form>
   <form method="POST" action="/exercises/<%=@exercise.id%>">
     <input type="hidden" name="_method" value="DELETE">
