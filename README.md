@@ -6,6 +6,8 @@ This app lets users track their weightlifting workouts. Sign up, log in, and beg
 
 To install, clone the repo and run `bundle install`.
 
+To run the app locally, use the `shotgun` command.
+
 
 
 # Contributing
