@@ -31,16 +31,16 @@ GET /exercises/:date/edit
 @movies = Movie.find(params[:date])
 erb :'/exercises/edit'
 
-PUT/PATCH /exercises/:date
-exercise = Exercise.find(params[:date])
+PUT/PATCH /exercises/:id
+exercise = Exercise.find(params[:id])
 
-movie.update(params)
+exercise.update(params)
 
 redirect to
 
 # Delete
 
-DELETE /exercises/:date
+DELETE /exercises/:id
 exercise = Exercise.find(params:date)
 Exercise.destroy(exercise)
 redirect to
@@ -50,6 +50,6 @@ redirect to
 | GET | /exercises/:date| show | # Get all the exercises for a date
 | GET | /exercises/new | new | #Get the form to make an exercise
 | POST | /exercises | #Create an exercise
-| GET | /exercises/:date/edit | edit | #Get form to edit a day of exercise
-| PUT/PATCH | exercises/:date | #update a day of exercise
-| DELETE | /exercises/:date | #delete a day of exercise
+| GET | /exercises/:id/edit | edit | #Get form to edit a day of exercise
+| PUT/PATCH | exercises/:id | #update a day of exercise
+| DELETE | /exercises/:id | #delete a day of exercise
