@@ -7,6 +7,14 @@ class ApplicationController < Sinatra::Base
       set :session_secret, "auth"
   end
 
+  get '/' do
+    if logged_in?
+      redirect "/exercises"
+    else
+      redirect "/login"
+    end
+  end
+
   helpers do
     def logged_in?
       !!current_user
