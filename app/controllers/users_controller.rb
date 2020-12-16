@@ -4,13 +4,17 @@ class UsersController < ApplicationController
   end
 
   post '/users' do
-    @user = User.new
-    @user.email = params[:email]
-    @user.password = params[:password]
-    if @user.save
-      redirect '/login'
+    if User.find_by(:email => params[:email]).nil? == false
+      redirect '/signup?error=username taken'
     else
-      erb :"users/new"
+      @user = User.new
+      @user.email = params[:email]
+      @user.password = params[:password]
+      if @user.save
+        redirect '/login'
+      else
+        erb :"users/new"
+      end
     end
   end
 end
